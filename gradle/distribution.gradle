@@ -1,0 +1,55 @@
+def isDevBuild
+def isCiBuild
+def isReleaseBuild
+
+def uploadRepositoryUrl
+
+if (hasProperty("release")) {
+	isReleaseBuild = true
+	uploadRepositoryUrl = "file:../maven-repo/releases"
+}else if (hasProperty("ci")) {
+	isCiBuild = true
+	version += "-SNAPSHOT"
+	uploadRepositoryUrl = "file:../maven-repo/snapshots"
+}else {
+	isDevBuild = true
+}
+
+uploadArchives {
+	repositories {
+		if (isDevBuild) {
+			mavenLocal()
+		}else {
+			mavenDeployer() {
+				name = "GitHub"
+
+				repository(url: uploadRepositoryUrl) {
+				}
+
+				pom.project {
+					name 'gradle-migrations-plugin'
+					packaging 'jar'
+					description 'Gradle plugin for Mybatis migrations'
+					url 'https://github.com/ePages-de/gradle-migrations-plugin'
+
+					scm {
+						url 'scm:git@github.com:ePages-de/gradle-migrations-plugin.git'
+						connection 'scm:git@github.com:ePages-de/gradle-migrations-plugin.git'
+						developerConnection 'scm:git@github.com:ePages-de/gradle-migrations-plugin.git'
+					}
+
+					developers {
+						developer {
+							id 'mircea-pop'
+							name 'Mircea Pop'
+						}
+						developer {
+							id 'otrosien'
+							name 'Oliver Trosien'
+						}
+					}
+				}
+			}
+		}
+	}
+}

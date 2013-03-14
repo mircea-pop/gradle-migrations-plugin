@@ -1,4 +1,4 @@
-package br.com.smartcoders.migration.tasks
+package com.epages.plugins.migration.tasks
 
 import org.apache.ibatis.migration.commands.NewCommand
 import org.gradle.api.DefaultTask

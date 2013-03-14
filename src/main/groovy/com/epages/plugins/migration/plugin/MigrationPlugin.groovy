@@ -1,8 +1,8 @@
-package br.com.smartcoders.migration.plugin;
+package com.epages.plugins.migration.plugin;
 
 import org.gradle.api.*
 
-import br.com.smartcoders.migration.tasks.*
+import com.epages.plugins.migration.tasks.*
 
 class MigrationPlugin implements Plugin<Project> {
 

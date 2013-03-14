@@ -1,4 +1,4 @@
-package br.com.smartcoders.migration.plugin;
+package com.epages.plugins.migration.plugin;
 
 import org.gradle.api.*
 
