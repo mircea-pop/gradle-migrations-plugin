@@ -4,6 +4,8 @@ import org.apache.ibatis.migration.commands.DownCommand
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 
+import com.google.common.io.NullOutputStream
+
 class DownTask extends DefaultTask {
 
     File baseDir
@@ -20,6 +22,7 @@ class DownTask extends DefaultTask {
     @TaskAction
     void status() {
         def command = new DownCommand(baseDir, environment, force)
+        command.setPrintStream(new PrintStream(new NullOutputStream()))
         CommandHelper.updateDriverClassLoader(project, command)
         command.execute(steps)
     }

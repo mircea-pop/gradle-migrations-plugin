@@ -10,16 +10,17 @@ buildscript {
 repositories { mavenCentral() }
 
 dependencies {
-	compile gradleApi()
-	compile "org.mybatis:mybatis:3.0.6"
-	groovy localGroovy()
+    compile gradleApi()
+    compile "org.mybatis:mybatis:3.0.6"
+    compile "com.google.guava:guava:14.0"
+    groovy localGroovy()
 }
 
 task wrapper(type:Wrapper) { gradleVersion = '1.4' }
 
 group = "com.epages.plugins"
 archivesBaseName = "migration"
-version = 0.1
+version = "0.0.2"
 
 apply from : './gradle/gh-pages.gradle'
 apply from : './gradle/jar.gradle'
