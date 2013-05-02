@@ -3,8 +3,14 @@ apply plugin: 'groovy'
 apply plugin: 'maven'
 
 buildscript {
-	repositories { mavenCentral() }
-	dependencies { classpath "org.ajoberstar:gradle-git:0.5.0" }
+    repositories {
+        mavenCentral()
+        maven { url "http://epages-de.github.com/maven-repo/releases"
+        } }
+    dependencies {
+        classpath "org.ajoberstar:gradle-git:0.5.0"
+        classpath 'com.epages.git:git-maven-repo:0.1'
+    }
 }
 
 repositories { mavenCentral() }
@@ -25,3 +31,4 @@ version = "0.0.2"
 apply from : './gradle/gh-pages.gradle'
 apply from : './gradle/jar.gradle'
 apply from : './gradle/distribution.gradle'
+apply from : './gradle/git.gradle'

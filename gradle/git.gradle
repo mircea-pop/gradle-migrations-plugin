@@ -1,0 +1,4 @@
+apply plugin: 'git-maven-repo'
+githubRepo {
+    gitMavenRepo = 'https://github.com/ePages-de/maven-repo.git'
+}
